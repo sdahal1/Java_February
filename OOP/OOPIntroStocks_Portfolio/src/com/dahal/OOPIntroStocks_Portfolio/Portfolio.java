@@ -3,16 +3,19 @@ package com.dahal.OOPIntroStocks_Portfolio;
 import java.util.ArrayList;
 
 public class Portfolio {
-	
+	//static variables are referenced from the class level (meaning that we dont need to create an instance of the class to access the method
+	private static int numberOfAccountsCreated = 0;
 	
 	//empty constructor
 	public Portfolio() {
 		this.name = "Guest User";
+		numberOfAccountsCreated++;
 	}
 	
 	//loaded constructor
 	public Portfolio(String nameInput) {
 		this.name = nameInput;
+		numberOfAccountsCreated++;
 	}
 	
 	//name of owner
@@ -97,17 +100,14 @@ public class Portfolio {
 	}
 	
 	
+	public static int getNumberOfAccountsCreated() {
+		return numberOfAccountsCreated;
+	}
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

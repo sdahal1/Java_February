@@ -28,7 +28,9 @@ public class PortfolioStockTest {
 		
 		Portfolio portfolio1 = new Portfolio();
 		Portfolio portfolio2 = new Portfolio("rob");
+		Portfolio portfolio3 = new Portfolio("Weezy");
 
+		
 		
 		portfolio1.setName("Fritz");
 		portfolio1.setTotalBalance(100);
@@ -53,6 +55,9 @@ public class PortfolioStockTest {
 //		System.out.println(String.format("Portfolio info: Owner: %s", portfolio1.name));
 //		s
 		portfolio1.displayInfo();
+		
+		
+		System.out.println(Portfolio.getNumberOfAccountsCreated());
 		
 		
 
