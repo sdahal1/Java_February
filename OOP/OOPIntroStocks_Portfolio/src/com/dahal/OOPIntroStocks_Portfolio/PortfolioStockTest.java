@@ -11,6 +11,8 @@ public class PortfolioStockTest {
 		Stock stock1 = new Stock();
 		Stock stock2 = new Stock();
 		Stock stock3 = new Stock();
+		Stock stock4 = new Stock("Tesla", 950.00);
+		
 		
 		stock1.setName("MARA");
 		stock2.setName("Apple");
@@ -25,7 +27,8 @@ public class PortfolioStockTest {
 		
 		
 		Portfolio portfolio1 = new Portfolio();
-		Portfolio portfolio2 = new Portfolio();
+		Portfolio portfolio2 = new Portfolio("rob");
+
 		
 		portfolio1.setName("Fritz");
 		portfolio1.setTotalBalance(100);
@@ -36,8 +39,16 @@ public class PortfolioStockTest {
 		fritzStocks.add(stock2);
 		
 		portfolio1.setStocks(fritzStocks);
+		System.out.println(portfolio1.getStocks());
+		
+		
+		portfolio1.addOneStock(stock4);
+		System.out.println(portfolio1.getStocks());
 //		portfolio1.stocks.add(stock1);
 ////		portfolio1.stocks.add(stock2);
+		portfolio1.printRiskAssessment();
+		
+		System.out.println(portfolio1.getTotalBalance());
 //		
 //		System.out.println(String.format("Portfolio info: Owner: %s", portfolio1.name));
 //		

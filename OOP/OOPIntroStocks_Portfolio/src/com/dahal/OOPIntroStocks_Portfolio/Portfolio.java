@@ -4,6 +4,17 @@ import java.util.ArrayList;
 
 public class Portfolio {
 	
+	
+	//empty constructor
+	public Portfolio() {
+		this.name = "Guest User";
+	}
+	
+	//loaded constructor
+	public Portfolio(String nameInput) {
+		this.name = nameInput;
+	}
+	
 	//name of owner
 	private String name;
 	
@@ -48,8 +59,36 @@ public class Portfolio {
 	}
 
 	public void setStocks(ArrayList<Stock> stocks) {
+		for(Stock stock: stocks) {
+			this.totalBalance+= stock.getPrice();
+		}
+		
+		
+		
 		this.stocks = stocks;
 	} 
+	
+	public void addOneStock(Stock stockObj) {
+		this.stocks.add(stockObj);
+		this.totalBalance += stockObj.getPrice();
+	}
+	
+	public void printRiskAssessment() {
+		if(this.isDiamondHands) {
+			System.out.println("IM NOT SELLING!!!");
+		}else {
+			System.out.println("I took profits tho. wacchu know about these paper hands");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

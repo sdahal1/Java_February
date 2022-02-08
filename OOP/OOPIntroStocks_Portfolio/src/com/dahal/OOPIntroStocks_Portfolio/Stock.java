@@ -4,9 +4,23 @@ public class Stock {
 	
 	//member variable- name
 	private String name;
-	
+		
 	//member variable- price
 	private double price;
+	
+	//constructor is a method that lets you define how to initialize the class
+	public Stock() {
+		
+	}
+	
+	//overloading the constructor (create another constructor with same exact name) so that we can create (construct) a stock that is initialized with a name and price upon construction
+	public Stock(String nameInput, double priceInput) {
+		this.name = nameInput;
+		this.price = priceInput;
+	}
+	
+	
+	
 
 	
 	//these methods are called getters and setters
