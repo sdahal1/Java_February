@@ -82,6 +82,21 @@ public class Portfolio {
 	}
 	
 	
+	public void displayInfo() {
+		String info = String.format("Name: %s \n Total Balance: %s \n", this.name, this.totalBalance);
+		
+		String stocksInfo = "";
+		//loop through the sotocks and add each stock info to the string
+		for(int i = 0; i<this.stocks.size(); i++) {
+			stocksInfo += String.format("%s - Price: $%s \n",this.stocks.get(i).getName(),this.stocks.get(i).getPrice());
+		}
+		
+		System.out.println(info);
+		System.out.println(stocksInfo);
+		
+	}
+	
+	
 	
 	
 	

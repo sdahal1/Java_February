@@ -51,8 +51,8 @@ public class PortfolioStockTest {
 		System.out.println(portfolio1.getTotalBalance());
 //		
 //		System.out.println(String.format("Portfolio info: Owner: %s", portfolio1.name));
-//		
-		
+//		s
+		portfolio1.displayInfo();
 		
 		
 
