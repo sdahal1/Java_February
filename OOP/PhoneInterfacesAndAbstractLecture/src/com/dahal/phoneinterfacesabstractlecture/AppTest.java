@@ -13,6 +13,11 @@ public class AppTest {
 		
 		Android android1 = new Android("S12", 110, "Verizon", "We winning");
 		android1.displayInfo();
+		
+		android1.unlockPhone();
+		iphone1.unlockPhone();
+		
+		
 	}
 
 }

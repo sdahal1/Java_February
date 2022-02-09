@@ -1,6 +1,6 @@
 package com.dahal.phoneinterfacesabstractlecture;
 
-public class Android extends Phone{
+public class Android extends Phone implements Ringable{
 	
 
 	//constructor for iphone that acceps inputs for version number, battery %, carrier, and ringtone
@@ -15,5 +15,15 @@ public class Android extends Phone{
 		System.out.println("Google Assistant is displaying info. Beep boop.");
 		System.out.println(String.format("Android info: \n Version Number: %s \n Battery Percentage %s \n Carrier: %s \n Ring Tone: %s", this.getVersionNumber(), this.getBatteryPercentage(), this.getCarrier(), this.getRingTone()));
 	}
+	
+	public void ring() {
+		System.out.println("Androidddddd ringing!!!! Here is your rington!!" + this.getRingTone());
+	}
+	
+	public void unlockPhone() {
+		System.out.println("UNLOCKING droiiiiiiiiddd USING PASSCODE!!!");
+	}
+	
+	
 
 }
