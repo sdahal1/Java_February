@@ -2,11 +2,11 @@ package com.dahal.olympiansinheritance;
 
 public class Olympian {
 	//name
-	private String name;
+	protected String name; //protected means that only this file and the classes that have inherited from this file can see/access these variables
 	//energylevel
-	private int energyLevel=100;
+	protected int energyLevel=100;
 	//country
-	private String country;
+	protected String country;
 	
 	
 //	//constructor
