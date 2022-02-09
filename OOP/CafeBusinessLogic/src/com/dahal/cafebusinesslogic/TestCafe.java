@@ -1,6 +1,6 @@
 package com.dahal.cafebusinesslogic;
-
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TestCafe {
 
@@ -48,15 +48,24 @@ public class TestCafe {
 	         appTest.displayMenu(menu);
 	    
 	         System.out.println("\n----- Add Customer Test-----");
+	         
 	         ArrayList<String> customers = new ArrayList<String>();
 	         
-	         System.out.println("Please enter your name: ");
-	         System.console().readLine();
-	        // // --- Test 4 times ---
-	        // for (int i = 0; i < 4; i++) {
-	        //     appTest.addCustomer(customers);
-	        //     System.out.println("\n");
-	        // }
+	         
+//	         System.console().readLine();
+	         
+//	         Scanner s = new Scanner(System.in);
+//	         String name;
+//	         
+//	          // --- Test 4 times ---
+	          for (int i = 0; i < 4; i++) {
+	        	  	
+	              appTest.addCustomer(customers);
+	       
+	          }
+	         
+	         
+	         System.out.println(customers);
 	}
 
 }

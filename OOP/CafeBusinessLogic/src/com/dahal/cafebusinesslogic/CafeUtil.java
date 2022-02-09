@@ -1,6 +1,7 @@
 package com.dahal.cafebusinesslogic;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CafeUtil {
 	
@@ -53,6 +54,16 @@ public class CafeUtil {
 			
 			System.out.printf("%s %s \n",i,menuItems.get(i));
 		}
+		
+	}
+	
+	public void addCustomer(ArrayList<String> customers) {
+		System.out.println("Please enter your name: ");
+		
+//		String userName = System.console().readLine();
+		Scanner s = new Scanner(System.in);
+		String userInput = s.next(); //s.next() prompts user for an input
+		customers.add(userInput);
 		
 	}
 	
