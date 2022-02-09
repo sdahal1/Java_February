@@ -8,6 +8,7 @@ public class OlympianTest {
 		
 		
 		Olympian olympian1 = new Olympian();
+		System.out.println("olympian info-->" + olympian1.getName());
 //		Olympian olympian2 = new Olympian("Phelps", "USA");
 //		
 //		System.out.println(olympian1.getName());
