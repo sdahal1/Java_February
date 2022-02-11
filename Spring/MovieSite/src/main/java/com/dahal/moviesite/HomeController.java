@@ -1,5 +1,7 @@
 package com.dahal.moviesite;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,18 @@ public class HomeController {
 		model.addAttribute("rd", releaseDate);
 		model.addAttribute("imageurl", imageUrl);
 		
+		
+		
+		//array of actors
+		ArrayList<Actor> castOfActors = new ArrayList<Actor>();
+		
+//		Actor a1 = new Actor("Denzel", "Washington", 50);
+//		
+		castOfActors.add(new Actor("Denzel", "Washington", 50));
+		castOfActors.add(new Actor("Russell", "Crowe", 55));
+		castOfActors.add(new Actor("Edris", "Alba", 45));
+//		
+		model.addAttribute("actors", castOfActors);
 		
 		return "index.jsp";
 		
