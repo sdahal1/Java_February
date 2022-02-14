@@ -11,30 +11,30 @@
 <body>
     <div class="container">
         <h1>Make a pet sitting arrangement!!!</h1>
-        <form action="" method="post">
+        <form action="/process_appointment" method="post">
             <div class="form-group">
                 <label for="">Pet Name:</label>
-                <input type="text" name="" id="" class="form-control">
+                <input type="text" name="pet_name" id="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Age:</label>
-                <input type="number" name="" id="" class="form-control" style = "width: 20%;">
+                <input type="number" name="age" id="" class="form-control" style = "width: 20%;">
             </div>
             <div class="form-group">
                 <label for="">Owner Name:</label>
-                <input type="text" name="" id="" class="form-control">
+                <input type="text" name="owner_name" id="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Pet Favorite Activity:</label>
-                <input type="text" name="" id="" class="form-control">
+                <input type="text" name="fav_activity" id="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Animals to keep pet away from:</label>
-                <input type="text" name="" id="" class="form-control">
+                <input type="text" name="other_animals" id="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Something nice about the pet</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="fun_fact" id="" cols="30" rows="10" class="form-control"></textarea>
             </div>
             <input type="submit" value="Submit!" class="btn btn-success">
         </form>
