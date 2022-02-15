@@ -40,7 +40,7 @@ public class MenuItem {
 	
 	//description
 	@NotNull
-	@Size(min = 2, max = 30, message= "Menu item dish type must be between 2-30 characters")
+	@Size(min = 2, max= 3000, message= "Menu item description must be between 2-30 characters")
 	private String description;
 	
 	
