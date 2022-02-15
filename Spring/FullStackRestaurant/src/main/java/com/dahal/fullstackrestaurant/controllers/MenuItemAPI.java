@@ -55,11 +55,8 @@ public class MenuItemAPI {
 		
 		return menuItemToShow;
 	}
-//	@RequestMapping("/api/books/{id}")
-//    public Book show(@PathVariable("id") Long id) {
-//        Book book = bookService.findBook(id);
-//        return book;
-//    }
+	
+
 
 	
 }
