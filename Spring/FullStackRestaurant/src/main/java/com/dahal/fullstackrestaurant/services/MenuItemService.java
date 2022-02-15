@@ -31,20 +31,23 @@ public class MenuItemService {
     	return this.menuRepo.save(menuItem);
     }
     
-// // retrieves a book
-//    public Book findBook(Long id) {
-//        Optional<Book> optionalBook = bookRepository.findById(id);
-//        if(optionalBook.isPresent()) {
-//            return optionalBook.get();
-//        } else {
-//            return null;
-//        }
-//    }
     
     //retrieves a MenuItem by id
     public MenuItem findMenuItem(Long id) {
     	
     	return this.menuRepo.findById(id).orElse(null);
+    }
+    
+    
+    //update a menuitem given an object
+    public MenuItem updateItem(MenuItem menuItem) {
+    	return this.menuRepo.save(menuItem);
+    }
+    
+    //delete a menuitem by its id
+    public void deleteItem(Long id) {
+    	this.menuRepo.deleteById(id);
+    	
     }
     
     

@@ -24,6 +24,7 @@
           <th scope="col">Name</th>
           <th scope="col">Type of Dish:</th>
           <th scope="col">Price</th>
+          <th>Actions: </th>
         </tr>
       </thead>
       <tbody>
@@ -33,11 +34,39 @@
             <td><a href="/menuitems/${menuObj.id}">${menuObj.name}</a></td>
             <td>${menuObj.dishType}</td>
             <td>${menuObj.price}</td>
+            <td>
+              <a href="/menuitems/edit/${menuObj.id}">Edit</a> ||
+              <a href="/menuitems/delete/${menuObj.id}">Delete</a>
+            </td>
           </tr>
         </c:forEach>
-       
       </tbody>
     </table>
+    <hr>
+
+    <form:form action="/menuitem/create" method="post" modelAttribute="menuitem">
+    <p>
+      <form:label path="name">Name: </form:label>
+      <form:errors path="name" class = "text-danger" />
+      <form:input type="text" path="name" class= "form-control"/>
+    </p>
+    <p>
+        <form:label path="dishType">Dish Type:</form:label>
+        <form:errors path="dishType" class = "text-danger"/>
+        <form:input type="text" path="dishType" class= "form-control"/>
+    </p>
+    <p>
+        <form:label path="price">Price: </form:label>
+        <form:errors path="price" class = "text-danger"/>
+        <form:input type = "number" path="price" step="0.01" class= "form-control"/>
+    </p>
+    <p>
+        <form:label path="description">Description: </form:label>
+        <form:errors path="description" class = "text-danger"/>     
+        <form:textarea path="description" class= "form-control"/>
+    </p>    
+    <input type="submit" value="Submit"/>
+</form:form>   
   </div>
 </body>
 </html>
