@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="books")
+@Table(name="menuitems")
 public class MenuItem {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
