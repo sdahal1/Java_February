@@ -1,9 +1,10 @@
 package com.dahal.petsittingform;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ public class HomeController {
 			@RequestParam("owner_name") String owner_name,
 			@RequestParam("fav_activity") String fav_activity,
 			@RequestParam("other_animals") String other_animals,
+//			@RequestParam Map<String,String> allRequestParams, //this is the shortcut way of doing the above 5 lines of code...only do this.
 			HttpSession session
 			) {
 		System.out.println("form submitted!!!!");
@@ -37,7 +39,7 @@ public class HomeController {
 		session.setAttribute("fav_activity", fav_activity);
 		session.setAttribute("other_animals", other_animals);
 		
-		
+//		System.out.println(allRequestParams.get("other_animals"));
 		
 		return "redirect:/details";
 	}

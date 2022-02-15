@@ -48,9 +48,19 @@ class SLL {
     }
 
 
-    addtoFront(){
+    addtoFront(value){
 
     }
+
+    removeFront(){
+
+    }
+
+    removeBack(){
+        
+    }
+
+
 
 }
 
