@@ -44,7 +44,8 @@
     </table>
     <hr>
 
-    <form:form action="/menuitem/create" method="post" modelAttribute="menuitem">
+    <form:form action="/menuitem/create" method="post" modelAttribute="menuitem"> <!--The model attribute represents which model to bind to-->
+      <!-- The path="" must match the member variables from the Table Model class -->
     <p>
       <form:label path="name">Name: </form:label>
       <form:errors path="name" class = "text-danger" />
@@ -66,7 +67,7 @@
         <form:textarea path="description" class= "form-control"/>
     </p>    
     <input type="submit" value="Submit"/>
-</form:form>   
+    </form:form>   
   </div>
 </body>
 </html>

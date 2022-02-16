@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.dahal.fullstackrestaurant.models.MenuItem;
 import com.dahal.fullstackrestaurant.services.MenuItemService;
 
-@Controller
+@Controller //@controller means that this class can return jsp files as a response and it can accept http requests
 public class MenuItemController {
+	
+	//the controller speaks to the service to access data. Controller doesnt directly access the data, it uses the service as a middleman (for modularization purposes)
 	private final MenuItemService menuService;
 
-	
+	//initialize the constructor with the MenuItemService enabled
 	public MenuItemController(MenuItemService menuService) {
 		this.menuService = menuService;
 	}
@@ -28,15 +30,17 @@ public class MenuItemController {
 	
 	
 	@RequestMapping("/menuitems")
-	public String index(Model model){
+	public String index(Model model){ //Dependency injection of Model model-> this means that we are enabling this index() method to have access to the View Model class to be able to pass data to templates
 		
-		System.out.println(this.menuService.allMenuItems());
-		
+//		System.out.println(this.menuService.allMenuItems());
+//		
+		//create a variable called allMenuItems that will store a List<MenuItem> and set it equal to what the service returns which is a List<MenuItem>
 		List<MenuItem> allMenuItems = this.menuService.allMenuItems();
-		
-		model.addAttribute("allMenuItems", allMenuItems);
-		
-		//send an empty MenuItem object to the form for the form to bind to
+//		
+		//model.addAttribute lets us pass data from the controller to the jsp file that we render in this method
+		model.addAttribute("allMenuItems", allMenuItems); //the word on the left side is what the HTML understands
+//		
+//		//send an empty MenuItem object to the form for the form to bind to
 		model.addAttribute("menuitem", new MenuItem());
 		return "index.jsp";
 	}
@@ -59,7 +63,7 @@ public class MenuItemController {
 	@PostMapping("/menuitem/create")
 	public String create(@Valid @ModelAttribute("menuitem") MenuItem menuItem, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			//need to pass in all menu items again
+			//need to pass in all menu items again to the template since we are re-rendering the template if there are validation errors
 			List<MenuItem> allMenuItems = this.menuService.allMenuItems();
 			
 			model.addAttribute("allMenuItems", allMenuItems);

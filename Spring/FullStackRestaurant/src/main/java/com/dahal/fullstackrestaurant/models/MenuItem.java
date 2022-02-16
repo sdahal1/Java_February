@@ -16,16 +16,19 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-@Table(name="menuitems")
+@Entity //@Entity annotation tells the class that it will represent a DB table (entity == table)
+@Table(name="menuitems") //@Table annotation  tells SQL the class we are building will have a table name. Best practice for table names: all lowercase, plural
 public class MenuItem {
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
+	
+	@Id  //for primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //this make the primary key auto-generate
     private Long id;
 	
 	//name
-	@NotNull
-	@Size(min = 2, max = 30, message= "Menu item name must be between 2-30 characters")
+	@NotNull //this is a validation that says that the name must not be null
+	@Size(min = 2, max = 30, message= "Menu item name must be between 2-30 characters") //@Size annotation is to validate strings and arrays lengths
 	private String name;
 	
 	//dishType (appetizer, drink, main dish, etc;)
@@ -35,7 +38,7 @@ public class MenuItem {
 	
 	//price
 	@NotNull
-    @Min(value= 1, message = "Price must be at least 1 dolla!")
+    @Min(value= 1, message = "Price must be at least 1 dolla!") //@Min and @Max are validations for numbers/doubles/floats(decimal numbers) 
     private double price;
 	
 	//description
@@ -44,7 +47,7 @@ public class MenuItem {
 	private String description;
 	
 	
-	// This will not allow the createdAt column to be updated after creation
+	// This will not allow the createdAt column to be updated after creation- these are time stamp member variables
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
@@ -52,12 +55,12 @@ public class MenuItem {
     private Date updatedAt;
     
     
-    //empty constructor
+    //empty constructor-needed for when we want to pass an empty object to the create form
     public MenuItem() {
     	
     }
 
-    //loaded constructor
+    //loaded constructor--> you do not need to initialize the ID, and the created_at and updated_at ->b/c they get auto generated
 	public MenuItem(String name,String dishType,double price,String description) {
 		this.name = name;
 		this.dishType = dishType;
@@ -65,12 +68,12 @@ public class MenuItem {
 		this.description = description;
 	}
 	
-	// other getters and setters removed for brevity
-    @PrePersist
+
+    @PrePersist //@PrePersist means before saving into the DB, autogenerate the current time and set that as the created_at
     protected void onCreate(){
         this.createdAt = new Date();
     }
-    @PreUpdate
+    @PreUpdate //@PreUpdate means before updating, set the updated at to be the current time stamp
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
