@@ -10,5 +10,7 @@
 </head>
 <body>
     <h1>Info about one item: ${menuItem.name} </h1>
+    <p>Price:  $${menuItem.price}</p>
+    <p>Description: ${menuItem.description}</p>
 </body>
 </html>

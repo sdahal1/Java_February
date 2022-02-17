@@ -16,7 +16,7 @@ public class MenuItemService { //the service is what has access to the repositor
     
     //constructor that has the repository injected into it (dependency injection) --> initializes the Service with connection to the repository
     public MenuItemService(MenuItemRepository menuRepo) {
-    	this.menuRepo = menuRepo;
+    		this.menuRepo = menuRepo;
     }
     
     
@@ -36,21 +36,22 @@ public class MenuItemService { //the service is what has access to the repositor
     
     
     
-    //retrieves a MenuItem by id
+    //retrieves a MenuItem by id. Given an id, this method will talk to the repository to get something form the db that matches that given id
     public MenuItem findMenuItem(Long id) {
-    	
+    			//find a menu item by the given id, if not found, return null (or else null)
     	return this.menuRepo.findById(id).orElse(null);
     }
     
     
-    //update a menuitem given an object
+//    //update a menuitem given an object and it will save that object to the db
     public MenuItem updateItem(MenuItem menuItem) {
-    	return this.menuRepo.save(menuItem);
+    		return this.menuRepo.save(menuItem);
     }
-    
-    //delete a menuitem by its id
+//    
+//    //delete a menuitem by its id
     public void deleteItem(Long id) {
-    	this.menuRepo.deleteById(id);
+    		//service accesses the repository to delete by the given id
+    		this.menuRepo.deleteById(id);
     	
     }
     

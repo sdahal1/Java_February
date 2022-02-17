@@ -46,13 +46,14 @@ public class MenuItemController {
 	}
 	
 	
-	//get info about one menu item by its id
+//	//get info about one menu item by its id
 	@RequestMapping("/menuitems/{id}")
 	public String show(@PathVariable("id") Long id, Model model) {
 		
-		//retrieve menu item and put in variable
+		//retrieve menu item and put in variable. We are using the id from the path /menuitems/{id}--> and requesting from the service a menu item from the db that has that particular id
 		MenuItem menuItem = this.menuService.findMenuItem(id);
 		
+		//pass the menuItem that was retrieved from the service to the templates ussing the view model
 		model.addAttribute("menuItem", menuItem);
 		
 		return "oneItem.jsp";
@@ -68,7 +69,7 @@ public class MenuItemController {
 			
 			model.addAttribute("allMenuItems", allMenuItems);
 			return "index.jsp";
-		}else {
+		}else { //else means there were no form errors, and we can send the menu item object from the form to the service
 			this.menuService.createMenuItem(menuItem);
 			return "redirect:/menuitems";
 		}	
@@ -76,34 +77,42 @@ public class MenuItemController {
 	
 	@RequestMapping("/menuitems/edit/{id}")
 	public String edit(@PathVariable("id") Long id, Model model) {
-		//get info about the menu item i want to edit by using the id in the route path so I can pre-populate the edit form with this menu item's info. 
+		
+		//get info about the menu item i want to edit by using the id from the route path (path variable) so I can pre-populate the edit form with this menu item's info. 
 		MenuItem itemToEdit = this.menuService.findMenuItem(id);
 		
+		//pass the existing menu item object that already has information to the edit form by using the view model to pass to the template
 		model.addAttribute("itemToEdit", itemToEdit);
 		
 		return "edit.jsp";
 	}
-	
+//	
 	@PutMapping("/menuitems/update/{id}")
-	public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("itemToEdit") MenuItem menuItemToEdit, BindingResult result, Model model) {
+	public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("itemToEdit") MenuItem menuItemToEdit, BindingResult result) {
+		
+		//the @ModelAttributre("itemToEdit") needs to match the modelAttribute in the edit form so we can get the menu item object from the form and store it in a varaible. If the result has errors (form was not filled out properly), then we re -render the edit form
 		if(result.hasErrors()) {
 			
 			return "edit.jsp";
-		}else {
+		}else { //otherwise if theres no errors, we send the object to update to the service and the service will talk to the repository to update that item
 			
 			this.menuService.updateItem(menuItemToEdit);
-			return "redirect:/menuitems";
+			
+			return "redirect:/menuitems"; //redirect to the menuitems page
 		}
 		
 	}
 	
+//	//for deleting routes, just make it a get request
 	@RequestMapping("/menuitems/delete/{id}")
 	public String delete(@PathVariable("id") Long id) {
+		
+		//we collect the id of the item we want to delte using the @pathvariable(id), and then we tell the service to delete something with this id
 		this.menuService.deleteItem(id);
 		
 		return "redirect:/menuitems";
 	}
-	
+//	
 	
 	
 	
