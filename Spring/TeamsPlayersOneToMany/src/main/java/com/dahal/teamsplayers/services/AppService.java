@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dahal.teamsplayers.models.Player;
 import com.dahal.teamsplayers.models.Team;
 import com.dahal.teamsplayers.repositories.PlayerRepository;
 import com.dahal.teamsplayers.repositories.TeamRepository;
@@ -32,6 +33,17 @@ public class AppService {
 		return (List<Team>)this.teamRepo.findAll();
 	}
 	
+	
+	//create a player
+	public Player createPlayer(Player p) {
+		return this.playerRepo.save(p);
+	}
+	
+	//get one team by id
+	public Team getOneTeam(Long id) {
+		
+		return this.teamRepo.findById(id).orElse(null);
+	}
 	
 	
 }

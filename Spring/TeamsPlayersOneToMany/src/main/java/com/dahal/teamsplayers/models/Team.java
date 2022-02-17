@@ -29,6 +29,11 @@ public class Team {
     @NotBlank(message = "Team name is required!")
     @Size(min = 3, max = 200, message= "Team name must be between 3-200 characters")
     private String name;
+    
+	  //ONE TO MANY CODE BELOW!!
+	  //a team can have many players, so we can store players in a list
+	  @OneToMany(mappedBy="team", fetch = FetchType.LAZY)
+	  private List<Player> players;
 
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -54,12 +59,7 @@ public class Team {
 		this.name = name;
 	  }
 	  
-	  
-	  
-	  //ONE TO MANY CODE BELOW!!
-	  //a team can have many players, so we can store players in a list
-	  @OneToMany(mappedBy="team", fetch = FetchType.LAZY)
-	  private List<Player> players;
+
 
 	public Long getId() {
 		return id;

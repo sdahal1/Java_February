@@ -13,7 +13,6 @@
 <body>
     <div class="container">
         <h1>Add a player below</h1>
-        <h1>${allteams}</h1>
         <form:form action="/players/create" method="post" modelAttribute="player">
             <div>
                 <form:label path="firstName">First Name</form:label>

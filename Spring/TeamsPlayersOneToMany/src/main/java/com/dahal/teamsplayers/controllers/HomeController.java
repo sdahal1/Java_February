@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -53,6 +54,39 @@ public class HomeController {
 		
 		return "player.jsp";
 	}
+	
+	
+	//create a player when the form submits using post request
+	@PostMapping("/players/create")
+	public String createPlayer(@Valid @ModelAttribute("player") Player player, BindingResult result) {
+		if(result.hasErrors()) {
+			return "player.jsp";
+		}else {
+			//if no errros in form, then create a player using the service
+			this.appServ.createPlayer(player);
+			
+			return "redirect:/";
+		}
+		
+		
+	}
+	
+	@RequestMapping("/teams/{id}")
+	public String showOneTeamDetails(@PathVariable("id") Long id, Model model) {
+		
+		//get one team using the id from the pathvariable by requesting it from the service 
+		Team teamToshow = this.appServ.getOneTeam(id);
+		
+		model.addAttribute("teamToshow", teamToshow);
+		
+		return "oneTeamDetails.jsp";
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
