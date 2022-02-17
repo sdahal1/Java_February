@@ -38,6 +38,11 @@ public class Player {
     private double pointsPerGame;
 
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="team_id")
+    private Team team;
+    
+    
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
@@ -62,9 +67,7 @@ public class Player {
 	}
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="team_id")
-    private Team team;
+	
 
 	public Long getId() {
 		return id;
