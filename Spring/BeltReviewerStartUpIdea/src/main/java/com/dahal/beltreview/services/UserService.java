@@ -16,6 +16,7 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
 
 	// TO-DO: Write register and login methods!
     public User register(User newUser, BindingResult result) {
@@ -87,6 +88,10 @@ public class UserService {
     	
     		return this.userRepo.findById(id).orElse(null);
     }
+    
+    
+    
+    
 	
 	
 
