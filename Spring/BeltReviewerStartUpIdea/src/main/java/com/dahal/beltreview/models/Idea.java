@@ -15,6 +15,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,7 +35,7 @@ public class Idea {
     private String name;
 	
 	//funding
-	@NotEmpty(message="Funding is required!")
+	@NotNull(message="Funding is required!")
     @Min(value = 1, message= "Funding amount must be a minimum of $1")
     private double fundingAmount;
 	

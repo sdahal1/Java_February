@@ -11,7 +11,8 @@
 <body>
     <div class="container">
         <h1>Welcome to the dashboard, ${loggedInUser.userName} </h1>
-        <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a> ||
+        <a href="/ideas/new">Add a new Start Up Idea</a>
         <table class="table table-dark">
             <thead>
               <tr>
@@ -20,19 +21,26 @@
                 <th scope="col">Amount Requested</th>
                 <th scope="col">Category</th>
                 <th scope="col">Idea Creator (Uploader)</th>
+                <th scope="col">Actions</th>
+
 
               </tr>
             </thead>
             <tbody>
                 <c:forEach items='${ allIdeas }' var='ideaObj'>
-
                     <tr>
                         <th scope="row">${ideaObj.id}</th>
-                        <td>${ideaObj.name}</td>
+                        <td><a href="/ideas/${ideaObj.id}/details">${ideaObj.name}</a></td>
                         <td>${ideaObj.fundingAmount}</td>
                         <td>${ideaObj.category}</td>
                         <td>${ideaObj.uploader.userName}</td>
-
+                        <td>
+                            <!--if the loggedinusers id is the same as the ideaObj's uploaders' id, then they can see the edit link-->
+                            <c:if test='${loggedInUser.id == ideaObj.uploader.id }'>
+                                <a href="/ideas/${ideaObj.id}/edit">Edit</a> || 
+                                <a href="/ideas/${ideaObj.id}/delete">Delete</a>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
               
