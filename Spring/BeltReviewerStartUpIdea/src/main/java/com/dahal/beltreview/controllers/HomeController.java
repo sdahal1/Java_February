@@ -1,5 +1,7 @@
 package com.dahal.beltreview.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.dahal.beltreview.models.Idea;
 import com.dahal.beltreview.models.LoginUser;
 import com.dahal.beltreview.models.User;
+import com.dahal.beltreview.services.IdeaService;
 import com.dahal.beltreview.services.UserService;
 
 @Controller
@@ -21,6 +25,9 @@ public class HomeController {
 	// Add once service is implemented:
      @Autowired
      private UserService userServ;
+     
+     @Autowired
+     private IdeaService ideaServ;
     
     @GetMapping("/")
     public String index(Model model) {
@@ -90,6 +97,11 @@ public class HomeController {
     		
     		model.addAttribute("loggedInUser", loggedInUser);
     		
+    		//get all the startup ideas from the service
+    		List<Idea> allIdeas = this.ideaServ.findAllIdeas();
+    		
+    		//pass the list of all ideas to the template using the view model
+    		model.addAttribute("allIdeas",allIdeas);
     		
     		return "dashboard.jsp";
     }

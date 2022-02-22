@@ -7,5 +7,5 @@ import com.dahal.beltreview.models.Idea;
 
 @Repository
 public interface IdeaRepository extends CrudRepository<Idea, Long> {
-
+	
 }
