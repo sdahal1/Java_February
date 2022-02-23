@@ -44,6 +44,12 @@
              </div>
              <input type="submit" value="Submit" class= "btn btn-success mt-3"/>
          </form:form>   
+
+         <hr>
+         <c:if test='${idOfLoggedInUser == idea.getUploader().getId()}'>
+            <h3>You are the creator of this idea!</h3>
+            <a href="/idea/${idea.id}/delete">Delete Idea</a>
+         </c:if>
      </div>
  </body>
  </html>

@@ -14,6 +14,12 @@
         <p>Funding Requested: $ ${ideaToShow.fundingAmount}</p>
         <p>Category ${ideaToShow.category}</p>
         <p>Description:  ${ideaToShow.description}</p>
+        <p>Creator of the Idea: ${ideaToShow.uploader.userName} </p>
+
+        <c:if test='${idOfLoggedInUser == ideaToShow.uploader.id}'>
+            <a href="/ideas/${ideaToShow.id}/edit">Edit</a> ||
+            <a href="/ideas/${ideaToShow.id}/delete">Delete</a>
+        </c:if>
 
 
     </div>

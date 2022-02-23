@@ -55,13 +55,18 @@ public class IdeaController {
 	
 	
 	@RequestMapping("/ideas/{id}/details")
-	public String getIdeaDetails(@PathVariable("id") Long id, Model model) {
+	public String getIdeaDetails(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
 		//use the id from the path variable to send to the service to get info about an idea given that id
 		Idea ideaToShow = this.ideaServ.getOneIdea(id);
 		
 		model.addAttribute("ideaToShow", ideaToShow);
 		
+//		get the id of the logged inuser using session
+		Long idOfLoggedInUser = (Long)session.getAttribute("loggedInUserID");
+		
+		//pass info about the logged in user to the form so that we know who is the uploader of the item/idea/pet/etc;
+		model.addAttribute("idOfLoggedInUser", idOfLoggedInUser);
 		
 		return "ideaDetail.jsp";
 	}
@@ -81,7 +86,14 @@ public class IdeaController {
 		//pass info about the logged in user to the form so that we know who is the uploader of the item/idea/pet/etc;
 		model.addAttribute("idOfLoggedInUser", idOfLoggedInUser);
 		
-		return "editIdea.jsp";
+		//check only render the jsp if the id of the loggedin user is the same as the id of the ideas creator
+		if(idOfLoggedInUser == idea.getUploader().getId()) {
+			return "editIdea.jsp";
+		}else {
+			return "redirect:/home";
+		}
+		
+		
 		
 	}
 	
