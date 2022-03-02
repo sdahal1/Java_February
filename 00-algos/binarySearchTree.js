@@ -47,18 +47,48 @@ class BST{
 
     }
 
-    findMin(){
+    getHeight(node = this.root, count=0){
+        
+        //base case is when we know exactly what to return. If the node is == null, return 0
+        if(node == null){
+            return count;
+        }else{
+            let max = Math.max(this.getHeight(node.left, count+1), this.getHeight(node.right, count+1))
+            return max
+        }
 
     }
 
-    findMax(){
+    totalSize(node = this.root){
+        //base case- simple case for the problem 
+        //if node is equal to null, then it will return zero
 
-    }
+        if(node==null){
+            console.log("node is null")
+            return 0
+        }
+        //if node is not null then we need to recursively go from node to node 
+        else{
+            console.log("this is the current node-->", node.value)
+            
+            return 1+  this.totalSize(node.left)+ this.totalSize(node.right)
+            
+
+        }
+        
+        }
+
+
+
+    
+
+    
+
 }
 
 
 let bst1 = new BST()
 
-bst1.insert(5).insert(3).insert(12).insert(10).insert(1).insert(4).insert(7).insert(14).insert(2)
+bst1.insert(5).insert(3).insert(12).insert(10).insert(1).insert(4).insert(7)
 
-console.log(bst1)
+console.log(bst1.totalSize())
