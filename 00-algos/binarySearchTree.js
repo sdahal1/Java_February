@@ -77,7 +77,33 @@ class BST{
         }
         
         }
+    
+        isFull(node = this.root){ 
+            //return true if the tree is full (every node either has 0 children or 2 children). Return false if tree is not full (at least one node in the tree has only one child)
+            console.log("1")
+            
+            if(node.right != null && node.left != null){ //if it has 2 children
+                // console.log("2")
+                // let flagleft= this.isFull(node.left)
+                // console.log("3")
+                // let flagright= this.isFull(node.right)
+                // console.log("4")
 
+                // if(flagleft && flagright){
+                //     return true
+                // }else{
+                //     return false
+                // }
+                console.log("hi")
+
+                return this.isFull(node.left) && this.isFull(node.right);
+            }else if(node.left == null && node.right == null){ 
+                return true
+    
+            }else{
+                return false
+            }
+        }
 
 
     
@@ -89,6 +115,12 @@ class BST{
 
 let bst1 = new BST()
 
-bst1.insert(5).insert(3).insert(12).insert(10).insert(1).insert(4).insert(7)
+bst1.insert(5).insert(10).insert(0).insert(15).insert(8).insert(9)
 
-console.log(bst1.totalSize())
+console.log(bst1.isFull())
+
+
+
+console.log("testingggg")
+
+console.log(false && false)
